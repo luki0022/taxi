@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <style>
+        ul {
+            columns: 2;
+            -webkit-columns: 2;
+            -moz-columns: 2;
+            font-size: 1.5em;
+            padding-left: 2em;
+        }
+        h1 {text-align: center;}
+    </style>
+    <title>Taxi Kürzel München</title>
+</head>
+
+<body>
+    <h1>Taxi Kürzel München</h1>
+    <div x-data="{
+        search: '',
+        items: [
+    { id: 'NN', label: 'lorem' },
+    { id: 'NK', label: 'ipsum' },
+    { id: 'NM', label: 'dolor' },
+    <!-- hier mehr einfuegen] -->
+    ], 
+        get filteredItems() {
+            return this.items.filter(
+                i=> i.id.startsWith(this.search)
+            )
+        }
+    }">
+        <input x-model="search" placeholder="Suchen...">
+        <ul style="list-style: none;">
+            <template x-for="item in filteredItems" :key="item.id">
+                <li x-text="item.id + ' : ' + item.label"></li>
+            </template>
+        </ul>
+    </div>
+
+</html>
