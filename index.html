@@ -17,6 +17,7 @@
 </head>
 
 <body>
+    <main class="container">
     <h1>Taxi Kürzel München</h1>
     <div x-data="{
         search: '',
@@ -28,16 +29,17 @@
     ], 
         get filteredItems() {
             return this.items.filter(
-                i=> i.id.startsWith(this.search)
+                i=> i.id.startsWith(this.search.toUpperCase())
             )
         }
     }">
-        <input x-model="search" placeholder="Suchen...">
+        <input x-model="search" style="text-transform: uppercase;" placeholder="Suchen...">
         <ul style="list-style: none;">
             <template x-for="item in filteredItems" :key="item.id">
                 <li x-text="item.id + ' : ' + item.label"></li>
             </template>
         </ul>
     </div>
+</main>
 
 </html>
